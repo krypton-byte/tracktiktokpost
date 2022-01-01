@@ -21,6 +21,7 @@ class Post(Session):
         userpage = self.get(f'https://www.tiktok.com/@{self.username}').text
         all_post = findall(r'href=\"(https?://www.tiktok.com/@[A-Za-z0-9_]+/video/[0-9]+)\"', userpage)
         newpost = set(all_post) - set(self.comparison)
+        open('index.html', 'w').write(userpage)
         if newpost:
             print(f'Latest Post: {list(newpost)}')
             self.comparison.extend(list(newpost))
