@@ -2,7 +2,7 @@ name: Tiktok Tracker
 
 on:
   schedule:
-    - cron: "* * * * *"
+    - cron: '* * * * *'
 
 jobs:
   build:
