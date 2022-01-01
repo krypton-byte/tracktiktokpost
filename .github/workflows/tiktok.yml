@@ -17,5 +17,6 @@ jobs:
       run: |
         python -m pip install requests
         python main.py --username=adhityappeo --file=out.json
+        echo '[]' > out.json
     - name: Deploy Files
       run: sh script.sh
