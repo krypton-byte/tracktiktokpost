@@ -13,7 +13,8 @@ class Post(Session):
 
     def __init__(self, username: str, comparisonfile: str) -> None:
         super().__init__()
-        self.headers:dict = {'sec-ch-ua': '"Google Chrome";v="89", "Chromium";v="89", ";Not A Brand";v="99"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': 'Linux', 'sec-fetch-dest': 'document', 'sec-fetch-mode': 'navigate', 'sec-fetch-site': 'none', 'sec-fetch-user': '?1', 'upgrade-insecure-requests': '1', 'origin': 'https://tiktok.com', 'referer': 'https://tiktok.com', 'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36', 'X-Forwarded-For': Faker().ipv4()}
+        ip = Faker().ipv4()
+        self.headers:dict = {'sec-ch-ua': '"Google Chrome";v="89", "Chromium";v="89", ";Not A Brand";v="99"', 'sec-ch-ua-mobile': '?0', 'sec-ch-ua-platform': 'Linux', 'sec-fetch-dest': 'document', 'sec-fetch-mode': 'navigate', 'sec-fetch-site': 'none', 'sec-fetch-user': '?1', 'upgrade-insecure-requests': '1', 'origin': 'https://tiktok.com', 'referer': 'https://tiktok.com', 'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36', 'X-Forwarded-For': ip, 'x-real-ip':ip}
         self.username = findall(r'@([a-zA-Z0-9\_]+)', username)[0] if '@' in username else username
         self.comparison = loads(open(comparisonfile, 'r').read()) if exists(comparisonfile) else []
         self.comparisonfile = comparisonfile
