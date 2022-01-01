@@ -24,6 +24,6 @@ jobs:
         git commit -m 'update'
     - name: PUSH
       uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          branch: master
+      with:
+        github_token: ${{ secrets.GH_TOKEN }}
+        branch: master
