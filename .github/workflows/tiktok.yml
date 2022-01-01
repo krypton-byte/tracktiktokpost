@@ -22,8 +22,7 @@ jobs:
         git config user.email "${{ secrets.GH_EMAIL }}"
         git add .
         git commit -m 'update'
-    - name: Push changes
-        uses: ad-m/github-push-action@master
+    - uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GH_TOKEN }}
           branch: master
