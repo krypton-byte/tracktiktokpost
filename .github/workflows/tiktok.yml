@@ -1,8 +1,9 @@
-name: Tiktok Tracker
+name: PUSH
 
-on:
-  schedule:
-    - cron: '1-59/2 * * * *'
+on: workflow_dispatch
+  # schedule:
+  #   - cron: '1-59/2 * * * *'
+  # wor
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,12 +19,8 @@ jobs:
         python main.py --username=adhityappeo --file=out.json
     - name: Deploy Files
       run: |
-        git config user.name ${{ secrets.GH_USER }}
-        git config user.email "${{ secrets.GH_EMAIL }}"
+        git config user.name "github-actions"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com""
         git add .
         git commit -m 'update'
-    - name: PUSH
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GH_TOKEN }}
-        branch: master
+        git push
