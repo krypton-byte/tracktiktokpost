@@ -14,7 +14,6 @@ jobs:
         python-version: 3.9
     - name: Install dependencies
       run: |
-        git checkout result
         python -m pip install requests
         python main.py --username=adhityappeo --file=out.json
     - name: Deploy Files
@@ -22,6 +21,5 @@ jobs:
         git config user.name ${{ secrets.GH_USER }}
         git config user.email "${{ secrets.GH_EMAIL }}"
         git remote set-url origin "https://${{ secrets.GH_TOKEN }}@github.com/krypton-byte/tracktiktokpost.git"
-        git add .
-        git commit -m "update"
+        git commit -am "update"
         git push origin master
