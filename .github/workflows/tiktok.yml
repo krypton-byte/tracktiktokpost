@@ -15,7 +15,7 @@ jobs:
         python-version: 3.9
     - name: Install dependencies
       run: |
-        python -m pip install requests
+        python -m pip install requests faker
         python main.py --username=adhityappeo --file=out.json
     - name: Deploy Files
       run: sh script.sh
